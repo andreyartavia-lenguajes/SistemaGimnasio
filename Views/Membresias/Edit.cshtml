@@ -1,0 +1,46 @@
+﻿@model SistemaGimnasio.Models.Membresia
+
+@{
+    ViewData["Title"] = "Editar membresía";
+}
+
+<h1>Editar membresía</h1>
+
+<form asp-action="Edit" asp-route-id="@Model.IdMembresia" method="post">
+
+    <input type="hidden" asp-for="IdMembresia" />
+
+    <div class="mb-3">
+        <label asp-for="IdCliente" class="form-label">Cliente</label>
+
+        <select asp-for="IdCliente" asp-items="ViewBag.IdCliente"
+                class="form-select" required>
+        </select>
+
+        <span asp-validation-for="IdCliente" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IdPlan" class="form-label">Plan de membresía</label>
+
+        <select asp-for="IdPlan" asp-items="ViewBag.IdPlan"
+                class="form-select" required>
+        </select>
+
+        <span asp-validation-for="IdPlan" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FechaInicio" class="form-label">Fecha de inicio</label>
+
+        <input asp-for="FechaInicio" type="date"
+               class="form-control" required />
+
+        <span asp-validation-for="FechaInicio" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+
+</form>

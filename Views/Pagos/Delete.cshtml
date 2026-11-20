@@ -1,0 +1,40 @@
+﻿@model SistemaGimnasio.Models.Pago
+
+@{
+    ViewData["Title"] = "Eliminar pago";
+}
+
+<h1>Eliminar pago</h1>
+
+<h4>¿Está seguro de eliminar este pago?</h4>
+
+<div class="mb-3">
+    <strong>ID:</strong> @Model.IdPago
+</div>
+
+<div class="mb-3">
+    <strong>Membresía:</strong> @Model.IdMembresia
+</div>
+
+<div class="mb-3">
+    <strong>Cliente:</strong>
+    @Model.IdMembresiaNavigation.IdClienteNavigation.Nombre
+    @Model.IdMembresiaNavigation.IdClienteNavigation.Apellido
+</div>
+
+<div class="mb-3">
+    <strong>Fecha de pago:</strong>
+    @Model.FechaPago.ToString("dd/MM/yyyy")
+</div>
+
+<div class="mb-3">
+    <strong>Monto:</strong> ₡@Model.Monto.ToString("N2")
+</div>
+
+<form asp-action="Delete" asp-route-id="@Model.IdPago" method="post">
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+
+</form>

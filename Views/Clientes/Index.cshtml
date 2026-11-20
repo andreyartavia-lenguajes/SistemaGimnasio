@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SistemaGimnasio.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h1>Clientes</h1>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nuevo cliente</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdCliente</td>
+                <td>@item.Nombre</td>
+                <td>@item.Apellido</td>
+                <td>@item.Telefono</td>
+                <td>@item.Correo</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdCliente"
+                       class="btn btn-warning">Editar</a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdCliente"
+                       class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

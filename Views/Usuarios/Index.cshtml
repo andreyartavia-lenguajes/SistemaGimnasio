@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SistemaGimnasio.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<h1>Usuarios</h1>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nuevo usuario</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdUsuario</td>
+                <td>@item.Nombre</td>
+                <td>@item.Usuario1</td>
+                <td>@item.IdRolNavigation.NombreRol</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdUsuario"
+                       class="btn btn-warning">Editar</a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdUsuario"
+                       class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

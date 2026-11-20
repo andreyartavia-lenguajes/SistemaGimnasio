@@ -1,0 +1,33 @@
+﻿@model SistemaGimnasio.Models.Usuario
+
+@{
+    ViewData["Title"] = "Eliminar usuario";
+}
+
+<h1>Eliminar usuario</h1>
+
+<h4>¿Está seguro de eliminar este usuario?</h4>
+
+<div class="mb-3">
+    <strong>ID:</strong> @Model.IdUsuario
+</div>
+
+<div class="mb-3">
+    <strong>Nombre:</strong> @Model.Nombre
+</div>
+
+<div class="mb-3">
+    <strong>Usuario:</strong> @Model.Usuario1
+</div>
+
+<div class="mb-3">
+    <strong>Rol:</strong> @Model.IdRolNavigation.NombreRol
+</div>
+
+<form asp-action="Delete" asp-route-id="@Model.IdUsuario" method="post">
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+
+</form>

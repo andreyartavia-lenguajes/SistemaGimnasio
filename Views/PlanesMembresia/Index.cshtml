@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SistemaGimnasio.Models.PlanesMembresium>
+
+@{
+    ViewData["Title"] = "Planes de membresía";
+}
+
+<h1>Planes de membresía</h1>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nuevo plan</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Duración en días</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdPlan</td>
+                <td>@item.Nombre</td>
+                <td>₡@item.Precio.ToString("N2")</td>
+                <td>@item.DuracionDias</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdPlan"
+                       class="btn btn-warning">Editar</a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdPlan"
+                       class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

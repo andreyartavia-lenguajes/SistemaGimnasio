@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SistemaGimnasio.Models.Role>
+
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<h1>Roles</h1>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nuevo rol</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre del rol</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdRol</td>
+                <td>@item.NombreRol</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdRol"
+                       class="btn btn-warning">Editar</a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdRol"
+                       class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

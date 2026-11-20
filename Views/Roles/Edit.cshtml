@@ -1,0 +1,27 @@
+﻿@model SistemaGimnasio.Models.Role
+
+@{
+    ViewData["Title"] = "Editar rol";
+}
+
+<h1>Editar rol</h1>
+
+<form asp-action="Edit" asp-route-id="@Model.IdRol" method="post">
+
+    <input type="hidden" asp-for="IdRol" />
+
+    <div class="mb-3">
+        <label asp-for="NombreRol" class="form-label">
+            Nombre del rol
+        </label>
+
+        <input asp-for="NombreRol" class="form-control" required />
+
+        <span asp-validation-for="NombreRol" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+
+</form>

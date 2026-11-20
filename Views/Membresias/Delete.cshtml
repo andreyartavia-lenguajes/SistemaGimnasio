@@ -1,0 +1,41 @@
+﻿@model SistemaGimnasio.Models.Membresia
+
+@{
+    ViewData["Title"] = "Eliminar membresía";
+}
+
+<h1>Eliminar membresía</h1>
+
+<h4>¿Está seguro de eliminar esta membresía?</h4>
+
+<div class="mb-3">
+    <strong>ID:</strong> @Model.IdMembresia
+</div>
+
+<div class="mb-3">
+    <strong>Cliente:</strong>
+    @Model.IdClienteNavigation.Nombre
+    @Model.IdClienteNavigation.Apellido
+</div>
+
+<div class="mb-3">
+    <strong>Plan:</strong> @Model.IdPlanNavigation.Nombre
+</div>
+
+<div class="mb-3">
+    <strong>Fecha de inicio:</strong>
+    @Model.FechaInicio.ToString("dd/MM/yyyy")
+</div>
+
+<div class="mb-3">
+    <strong>Fecha de vencimiento:</strong>
+    @Model.FechaVencimiento.ToString("dd/MM/yyyy")
+</div>
+
+<form asp-action="Delete" asp-route-id="@Model.IdMembresia" method="post">
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+
+</form>

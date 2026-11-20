@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SistemaGimnasio.Models.Membresia>
+
+@{
+    ViewData["Title"] = "Membresías";
+}
+
+<h1>Membresías</h1>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nueva membresía</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Plan</th>
+            <th>Fecha de inicio</th>
+            <th>Fecha de vencimiento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdMembresia</td>
+                <td>
+                    @item.IdClienteNavigation.Nombre
+                    @item.IdClienteNavigation.Apellido
+                </td>
+                <td>@item.IdPlanNavigation.Nombre</td>
+                <td>@item.FechaInicio.ToString("dd/MM/yyyy")</td>
+                <td>@item.FechaVencimiento.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdMembresia"
+                       class="btn btn-warning">Editar</a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdMembresia"
+                       class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

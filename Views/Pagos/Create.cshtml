@@ -1,0 +1,44 @@
+﻿@model SistemaGimnasio.Models.Pago
+
+@{
+    ViewData["Title"] = "Registrar pago";
+}
+
+<h1>Registrar pago</h1>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="IdMembresia" class="form-label">Membresía</label>
+
+        <select asp-for="IdMembresia" asp-items="ViewBag.IdMembresia"
+                class="form-select" required>
+            <option value="">Seleccione una membresía</option>
+        </select>
+
+        <span asp-validation-for="IdMembresia" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FechaPago" class="form-label">Fecha de pago</label>
+
+        <input asp-for="FechaPago" type="date"
+               class="form-control" required />
+
+        <span asp-validation-for="FechaPago" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Monto" class="form-label">Monto (₡)</label>
+
+        <input asp-for="Monto" type="number" step="0.01"
+               min="0.01" class="form-control" required />
+
+        <span asp-validation-for="Monto" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+
+</form>

@@ -1,0 +1,37 @@
+﻿@model SistemaGimnasio.Models.Cliente
+
+@{
+    ViewData["Title"] = "Eliminar cliente";
+}
+
+<h1>Eliminar cliente</h1>
+
+<h4>¿Está seguro de eliminar este cliente?</h4>
+
+<div class="mb-3">
+    <strong>ID:</strong> @Model.IdCliente
+</div>
+
+<div class="mb-3">
+    <strong>Nombre:</strong> @Model.Nombre
+</div>
+
+<div class="mb-3">
+    <strong>Apellido:</strong> @Model.Apellido
+</div>
+
+<div class="mb-3">
+    <strong>Teléfono:</strong> @Model.Telefono
+</div>
+
+<div class="mb-3">
+    <strong>Correo:</strong> @Model.Correo
+</div>
+
+<form asp-action="Delete" asp-route-id="@Model.IdCliente" method="post">
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+
+</form>

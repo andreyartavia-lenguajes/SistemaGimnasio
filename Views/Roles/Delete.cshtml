@@ -1,0 +1,27 @@
+﻿@model SistemaGimnasio.Models.Role
+
+@{
+    ViewData["Title"] = "Eliminar rol";
+}
+
+<h1>Eliminar rol</h1>
+
+<h4>¿Está seguro de eliminar este rol?</h4>
+
+<div class="mb-3">
+    <strong>ID:</strong> @Model.IdRol
+</div>
+
+<div class="mb-3">
+    <strong>Nombre del rol:</strong> @Model.NombreRol
+</div>
+
+<form asp-action="Delete" asp-route-id="@Model.IdRol" method="post">
+
+    <input type="hidden" asp-for="IdRol" />
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+
+</form>

@@ -1,0 +1,36 @@
+﻿@model SistemaGimnasio.Models.Asistencia
+
+@{
+    ViewData["Title"] = "Editar asistencia";
+}
+
+<h1>Editar asistencia</h1>
+
+<form asp-action="Edit" asp-route-id="@Model.IdAsistencia" method="post">
+
+    <input type="hidden" asp-for="IdAsistencia" />
+
+    <div class="mb-3">
+        <label asp-for="IdCliente" class="form-label">Cliente</label>
+
+        <select asp-for="IdCliente" asp-items="ViewBag.IdCliente"
+                class="form-select" required>
+        </select>
+
+        <span asp-validation-for="IdCliente" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FechaAsistencia" class="form-label">Fecha de asistencia</label>
+
+        <input asp-for="FechaAsistencia" type="date"
+               class="form-control" required />
+
+        <span asp-validation-for="FechaAsistencia" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+
+</form>

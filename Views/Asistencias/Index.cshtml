@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SistemaGimnasio.Models.Asistencia>
+
+@{
+    ViewData["Title"] = "Asistencias";
+}
+
+<h1>Asistencias</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nueva asistencia</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Fecha de asistencia</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdAsistencia</td>
+                <td>
+                    @item.IdClienteNavigation.Nombre
+                    @item.IdClienteNavigation.Apellido
+                </td>
+                <td>@item.FechaAsistencia.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdAsistencia"
+                       class="btn btn-warning">Editar</a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdAsistencia"
+                       class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

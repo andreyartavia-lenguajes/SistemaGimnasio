@@ -1,0 +1,32 @@
+﻿@model SistemaGimnasio.Models.Asistencia
+
+@{
+    ViewData["Title"] = "Eliminar asistencia";
+}
+
+<h1>Eliminar asistencia</h1>
+
+<h4>¿Está seguro de eliminar esta asistencia?</h4>
+
+<div class="mb-3">
+    <strong>ID:</strong> @Model.IdAsistencia
+</div>
+
+<div class="mb-3">
+    <strong>Cliente:</strong>
+    @Model.IdClienteNavigation.Nombre
+    @Model.IdClienteNavigation.Apellido
+</div>
+
+<div class="mb-3">
+    <strong>Fecha de asistencia:</strong>
+    @Model.FechaAsistencia.ToString("dd/MM/yyyy")
+</div>
+
+<form asp-action="Delete" asp-route-id="@Model.IdAsistencia" method="post">
+
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+
+</form>
